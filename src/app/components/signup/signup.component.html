@@ -1,0 +1,28 @@
+<div class="body">
+    <h2> Sign Up</h2>
+    <div class="alert alert-danger" *ngIf="errorMessage" >
+        {{ errorMessage }}
+    </div>
+    <form #f="ngForm" (ngSubmit)="signUp(f)" >
+        <input ngModel name="name" type="text" #name="ngModel" class="form-control" placeholder=" Type Your Name .... " required>
+        <div class="alert alert-danger" *ngIf="name.invalid && name.touched">Name Is Required</div>
+
+        <input ngModel name="email"  #email="ngModel"type="email" class="form-control" placeholder=" Type Your Email .... " required email>
+        <div class="alert alert-danger" *ngIf="email.touched && email.errors?.required ">Email Is Required</div>
+        <div class="alert alert-danger" *ngIf="email.touched && email.errors?.email">Your Input Doesnt Match Email Format </div>
+
+        <input ngModel name="password" #password="ngModel" type="password" class="form-control" placeholder=" Type Your Password .... " required minlength="6">
+        <div class="alert alert-danger" *ngIf="password.touched && password.errors?.required ">Password Is Required</div>
+        <div class="alert alert-danger" *ngIf="password.touched && password.errors?.minlength">Should Be At Least 6 Chrachters Or More</div>
+
+        <input ngModel name="passwordconfirm" #passwordConf="ngModel" type="password" class="form-control" placeholder=" Confirm Your Password .... " required>
+        <div class="alert alert-danger" *ngIf="passwordConf.invalid && passwordConf.touched">password confirm Is Required</div>
+        <div class="alert alert-danger" *ngIf="passwordConf.value !== password.value && passwordConf.touched" >Passwords Are Not Equal </div>
+
+        <input ngModel name="address" type="text" #address="ngModel" class="form-control" placeholder=" Enter Your Address .... " required>
+        <div class="alert alert-danger" *ngIf="address.invalid && address.touched">Address Is Required</div>
+
+        <div>Already have Account?  <a class="btn btn-success" routerLink='/login' routerLinkActive="router-link-active" >Login</a></div>
+        <button class="btn btn-primary" [disabled]="f.invalid || passwordConf.value !== password.value">Create</button>
+    </form>
+</div>

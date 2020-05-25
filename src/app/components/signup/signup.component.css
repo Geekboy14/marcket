@@ -1,0 +1,16 @@
+.body{
+  width: auto;
+  padding: 50px;
+}
+.body h2{
+  text-align: center;
+}
+.body button{
+margin: 6px;
+}
+.form-control{
+  margin:6px;
+
+}
+
+
