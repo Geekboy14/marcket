@@ -12,7 +12,7 @@
       <td>{{ good.name }}</td>
       <td> {{ good.price| currency}}</td>
       <td>
-        <input type="number" placeholder="Amount">
+        <input type="number" placeholder="Amount(pieces)" [(ngModel)]="good.amount">
       </td>
       <td>
         {{(good.price * good.amount) |currency}}

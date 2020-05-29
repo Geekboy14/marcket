@@ -17,12 +17,14 @@ export class CartComponent implements OnInit {
         this.cart = cart.map(shopping => {
           return {
             id:shopping.payload.doc.id,
-            ...shopping.payload.doc.data()
+            amount: shopping.payload.doc.data()['amount'],
+            name: shopping.payload.doc.data()['name'],
+            price: shopping.payload.doc.data()['price'],
           }
         })
     })
   }
-delete(inddex){
-this.cs.delete(this.cart[inddex].id)
+delete(index){
+this.cs.delete(this.cart[index].id)
 }
 }
