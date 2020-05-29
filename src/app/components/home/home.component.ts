@@ -1,3 +1,4 @@
+import { CartService } from './../../services/cart.service';
 import { GoodsService } from './../../services/goods.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Good } from '../../interfaces/good';
@@ -10,9 +11,9 @@ import { Subscription } from 'rxjs';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   goods:Good[]=[]
-  goodsObservable: Subscription
-
-  constructor(private gs: GoodsService) { }
+  goodsObservable: Subscription;
+  add: number = -1;
+  constructor(private gs: GoodsService, private cs : CartService) { }
 
   ngOnInit() {
    this.goodsObservable = this.gs.getAllGoods().subscribe(data => {
@@ -30,8 +31,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.goodsObservable.unsubscribe();
   }
 
-  addToCArt(id){
-    console.log('added ', id);
+  addToCArt(index:number){
+    this.add = +index
   }
-
+  buy(amount: number){
+    let selectedGood = this.goods[this.add]
+    let data = {
+      name: selectedGood.name,
+      amount: +amount,
+      price: selectedGood.price
+    }
+    this.cs.addToCart(data).then(() => this.add = -1)
+  }
 }
