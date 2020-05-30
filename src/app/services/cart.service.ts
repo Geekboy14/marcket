@@ -19,5 +19,9 @@ export class CartService {
   delete(id){
   return this.fs.doc(`users/${this.as.userId}/cart/${id}`).delete()
 }
-
+save(id,amount){
+  this.fs.doc(`users/${this.as.userId}/cart/${id}`).update({
+    amount
+  })
+}
 }

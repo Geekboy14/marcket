@@ -24,6 +24,9 @@ export class CartComponent implements OnInit {
         })
     })
   }
+  save(index){
+    this.cs.save(this.cart[index].id,this.cart[index].amount)
+  }
 delete( index ){
 this.cs.delete(this.cart[index].id)
 }

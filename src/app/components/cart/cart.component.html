@@ -18,7 +18,7 @@
         {{(good.price * good.amount) |currency}}
       </td>
       <td>
-        <button class="btn btn-success">Save</button>
+        <button class="btn btn-success" (click)="save(i)"  >Save</button>
         <button class="btn btn-outline-danger" (click)="delete(i)">Delete</button>
       </td>
     </tr>

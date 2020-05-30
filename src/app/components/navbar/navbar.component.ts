@@ -28,7 +28,7 @@ export class NavbarComponent implements OnInit {
     this.isOpen = !this.isOpen;
   }
   logout(){
-   this.as.logout().then(() => console.log('loged-out'))
+   this.as.logout()
   }
 
 }
