@@ -16,8 +16,8 @@ export class CartService {
     return this.fs.collection(`users/${this.as.userId}/cart`).snapshotChanges()
 
   }
-  delete( id ){
-  return this.fs.doc(`users/${this.as.userId}/cart/$(id)`).delete()
+  delete(id){
+  return this.fs.doc(`users/${this.as.userId}/cart/${id}`).delete()
 }
 
 }
